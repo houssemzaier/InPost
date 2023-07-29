@@ -2,7 +2,7 @@ package pl.inpost.recruitmenttask.network.model
 
 import java.time.ZonedDateTime
 
-data class EventLogNetwork(
+data class EventLogNetworkDto(
     val name: String,
-    val date: ZonedDateTime
+    val date: ZonedDateTime,
 )

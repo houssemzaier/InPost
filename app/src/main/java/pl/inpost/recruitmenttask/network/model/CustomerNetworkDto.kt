@@ -1,7 +1,7 @@
 package pl.inpost.recruitmenttask.network.model
 
-data class CustomerNetwork(
+data class CustomerNetworkDto(
     val email: String?,
     val phoneNumber: String?,
-    val name: String?
+    val name: String?,
 )

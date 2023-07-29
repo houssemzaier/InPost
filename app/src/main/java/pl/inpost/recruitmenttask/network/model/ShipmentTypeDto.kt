@@ -1,6 +1,7 @@
 package pl.inpost.recruitmenttask.network.model
 
-enum class ShipmentType {
+enum class ShipmentTypeDto {
     PARCEL_LOCKER,
-    COURIER;
+    COURIER,
+    ;
 }

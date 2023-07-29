@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">InPost Recruitment Task</string>
 
+    <string name="status_not_ready">Nie gotowe</string>
     <string name="status_adopted_at_sorting_center">Przyjęta w Sortowni</string>
     <string name="status_sent_from_sorting_center">Wysłana z Sortowni</string>
     <string name="status_adopted_at_source_branch">Przyjęta w Oddziale</string>

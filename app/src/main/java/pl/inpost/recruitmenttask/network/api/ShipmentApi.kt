@@ -1,7 +1,7 @@
 package pl.inpost.recruitmenttask.network.api
 
-import pl.inpost.recruitmenttask.network.model.ShipmentNetwork
+import pl.inpost.recruitmenttask.network.model.ShipmentNetworkDto
 
 interface ShipmentApi {
-    suspend fun getShipments(): List<ShipmentNetwork>
+    suspend fun getShipments(): List<ShipmentNetworkDto>
 }
