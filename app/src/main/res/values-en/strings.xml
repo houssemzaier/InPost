@@ -16,4 +16,12 @@
   <string name="status_ready_to_pickup">Ready for Pickup</string>
   <string name="status_returned_to_sender">Returned to Sender</string>
 
+  <string name="shipmentList_label_parcel_number">Parcel number</string>
+  <string name="shipmentList_label_status">Status</string>
+  <string name="shipmentList_label_sender">Sender</string>
+  <string name="shipmentList_label_more">More</string>
+
+  <string name="shipmentList_label_awaitingPickupUntil">Awaiting pickup until</string>
+
+
 </resources>
