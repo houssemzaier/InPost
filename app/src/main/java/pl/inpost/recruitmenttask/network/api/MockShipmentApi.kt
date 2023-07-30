@@ -4,6 +4,7 @@ import android.content.Context
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.delay
 import pl.inpost.recruitmenttask.R
 import pl.inpost.recruitmenttask.network.ApiTypeAdapter
 import pl.inpost.recruitmenttask.network.model.ShipmentNetworkDto
@@ -30,6 +31,8 @@ class MockShipmentApi @Inject constructor(
     }
 
     override suspend fun getShipments(): List<ShipmentNetworkDto> {
+        delay(1_500) //to fake loading
+
         val highlightedShipments = response.shipments.filter { it.operations.highlight }
         val nonHighlightedShipments = response.shipments.filterNot { it.operations.highlight }
 

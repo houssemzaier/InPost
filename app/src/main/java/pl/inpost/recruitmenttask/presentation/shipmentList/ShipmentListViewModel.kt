@@ -26,19 +26,26 @@ class ShipmentListViewModel @Inject constructor(
     private val coroutineDispatcherProvider: CoroutineDispatcherProvider,
 ) : ViewModel() {
 
-    private val mutableViewState = MutableLiveData<List<Section>>(emptyList())
-    val viewState: LiveData<List<Section>> = mutableViewState
+    private val _mutableUiState = MutableLiveData(ShipmentListScreenUiState())
+    val mutableUiState: LiveData<ShipmentListScreenUiState> = _mutableUiState
 
     init {
         refreshData()
     }
 
-    private fun refreshData() {
+    fun refreshData() {
         viewModelScope.launch(coroutineDispatcherProvider.io) {
+            _mutableUiState.postValue(_mutableUiState.value?.copy(isRefreshing = true))
+
             val shipments = getAllShipmentsUseCase()
             val sectionList = createScreenUiModel(shipments)
 
-            mutableViewState.postValue(sectionList)
+            _mutableUiState.postValue(
+                _mutableUiState.value?.copy(
+                    shipmentList = sectionList,
+                    isRefreshing = false,
+                )
+            )
         }
     }
 

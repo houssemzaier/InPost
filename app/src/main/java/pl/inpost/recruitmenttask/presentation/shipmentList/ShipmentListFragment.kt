@@ -24,14 +24,15 @@ class ShipmentListFragment : Fragment() {
     ): View {
         return ComposeView(requireActivity()).apply {
             setContent {
-                val shipmentList = viewModel.viewState.observeAsState(emptyList()).value
+                val shipmentList =
+                    viewModel.mutableUiState.observeAsState(ShipmentListScreenUiState()).value
                 InpostTheme {
                     Scaffold(
                         topBar = {
                             TopBar()
                         },
                     ) { padding ->
-                        ShipmentListScreen(padding, shipmentList)
+                        ShipmentListScreen(padding, shipmentList, viewModel::refreshData)
                     }
                 }
             }
