@@ -1,9 +1,9 @@
-package pl.inpost.recruitmenttask.network.model
+package pl.inpost.recruitmenttask.data.network.model
 
 import pl.inpost.recruitmenttask.domain.Shipment
-import pl.inpost.recruitmenttask.network.model.SenderNetworkDto.Companion.toDomain
-import pl.inpost.recruitmenttask.network.model.ShipmentStatusDto.Companion.toDomain
-import pl.inpost.recruitmenttask.network.model.ShipmentTypeDto.Companion.toDomain
+import pl.inpost.recruitmenttask.data.network.model.SenderNetworkDto.Companion.toDomain
+import pl.inpost.recruitmenttask.data.network.model.ShipmentStatusDto.Companion.toDomain
+import pl.inpost.recruitmenttask.data.network.model.ShipmentTypeDto.Companion.toDomain
 import java.time.ZonedDateTime
 
 data class ShipmentNetworkDto(

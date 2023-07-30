@@ -2,8 +2,8 @@ package pl.inpost.recruitmenttask.data
 
 import pl.inpost.recruitmenttask.domain.Shipment
 import pl.inpost.recruitmenttask.domain.repositories.ShipmentRepository
-import pl.inpost.recruitmenttask.network.api.ShipmentApi
-import pl.inpost.recruitmenttask.network.model.ShipmentNetworkDto.Companion.toDomain
+import pl.inpost.recruitmenttask.data.network.api.ShipmentApi
+import pl.inpost.recruitmenttask.data.network.model.ShipmentNetworkDto.Companion.toDomain
 import javax.inject.Inject
 
 class ShipmentRepositoryImpl @Inject constructor(

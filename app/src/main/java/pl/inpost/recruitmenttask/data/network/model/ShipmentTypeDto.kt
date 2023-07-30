@@ -1,4 +1,4 @@
-package pl.inpost.recruitmenttask.network.model
+package pl.inpost.recruitmenttask.data.network.model
 
 import pl.inpost.recruitmenttask.domain.ShipmentType
 
