@@ -1,6 +1,21 @@
-package pl.inpost.recruitmenttask.network.model
+package pl.inpost.recruitmenttask.domain
 
-import pl.inpost.recruitmenttask.domain.ShipmentStatus
+import java.time.ZonedDateTime
+
+data class Shipment(
+    val number: String,
+    val shipmentType: ShipmentType,
+    val status: ShipmentStatus,
+    val pickUpDate: ZonedDateTime?,
+    val sender: Sender?,
+)
+
+
+enum class ShipmentType {
+    PARCEL_LOCKER,
+    COURIER,
+    ;
+}
 
 /**
  * Order of statuses
@@ -18,7 +33,7 @@ import pl.inpost.recruitmenttask.domain.ShipmentStatus
  * 12. READY_TO_PICKUP
  * 13. PICKUP_TIME_EXPIRED
  */
-enum class ShipmentStatusDto(
+enum class ShipmentStatus(
     val order: Int
 ) {
     NOT_READY(0),
@@ -36,11 +51,11 @@ enum class ShipmentStatusDto(
     READY_TO_PICKUP(12),
     PICKUP_TIME_EXPIRED(13),
     ;
-
-    companion object {
-        fun ShipmentStatusDto.toDomain(): ShipmentStatus {
-            return ShipmentStatus.valueOf(this.name)
-        }
-    }
 }
 
+
+data class Sender(
+    val email: String?,
+    val phoneNumber: String?,
+    val name: String?
+)

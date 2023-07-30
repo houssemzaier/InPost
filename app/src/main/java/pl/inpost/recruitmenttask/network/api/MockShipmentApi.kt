@@ -8,8 +8,9 @@ import pl.inpost.recruitmenttask.R
 import pl.inpost.recruitmenttask.network.ApiTypeAdapter
 import pl.inpost.recruitmenttask.network.model.ShipmentNetworkDto
 import pl.inpost.recruitmenttask.network.model.ShipmentsResponseDto
+import javax.inject.Inject
 
-class MockShipmentApi(
+class MockShipmentApi @Inject constructor(
     @ApplicationContext private val context: Context,
     apiTypeAdapter: ApiTypeAdapter
 ) : ShipmentApi {
