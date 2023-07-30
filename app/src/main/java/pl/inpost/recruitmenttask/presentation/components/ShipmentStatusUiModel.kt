@@ -2,7 +2,7 @@ package pl.inpost.recruitmenttask.presentation.components
 
 import androidx.annotation.StringRes
 import pl.inpost.recruitmenttask.R
-import pl.inpost.recruitmenttask.network.model.ShipmentStatusDto
+import pl.inpost.recruitmenttask.domain.ShipmentStatus
 
 enum class ShipmentStatusUiModel(
     @StringRes val nameRes: Int,
@@ -25,7 +25,7 @@ enum class ShipmentStatusUiModel(
     ;
 
     companion object {
-        fun ShipmentStatusDto.toUiModel(): ShipmentStatusUiModel {
+        fun ShipmentStatus.toUiModel(): ShipmentStatusUiModel {
             return ShipmentStatusUiModel.valueOf(this.name)
         }
     }
