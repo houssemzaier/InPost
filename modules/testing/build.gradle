@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace 'pl.inpost.recruitmenttask.domain'
+    namespace 'pl.inpost.recruitmenttask.testing'
     compileSdk 33
 
     defaultConfig {
@@ -33,14 +33,36 @@ kapt {
     }
 }
 
-dependencies {
-    implementation project(':modules:utils')
+hilt {
+    enableAggregatingTask = true
+}
 
+dependencies {
     coreLibraryDesugaring libs.desugar.jdk.libs
     implementation libs.kotlinx.coroutines.android
 
     implementation libs.hilt.android
     ksp libs.hilt.compiler
 
-    testImplementation project(':modules:testing')
+    api libs.junit
+    api libs.junit.jupiter.api
+    testRuntimeOnly libs.junit.jupiter.engine
+    api libs.kotlinx.coroutines.test
+    api libs.test.core.ktx
+    api libs.test.junit.ktx
+    api libs.robolectric
+
+    api libs.androidTest.junit
+    api libs.espresso.core
+    //testImplementation libs.junit
+    //testImplementation libs.junit.jupiter.api
+    //testRuntimeOnly libs.junit.jupiter.engine
+    //testImplementation libs.kotlinx.coroutines.test
+    //testImplementation libs.test.core.ktx
+    //testImplementation libs.test.junit.ktx
+    //testImplementation libs.robolectric
+    //
+    //androidTestImplementation libs.androidTest.junit
+    //androidTestImplementation libs.espresso.core
 }
+

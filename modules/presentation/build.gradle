@@ -25,8 +25,8 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
         freeCompilerArgs += [
-                "-Xopt-in=kotlin.RequiresOptIn",
-                "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi",
+                "-opt-in=kotlin.RequiresOptIn",
+                "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
         ]
     }
     buildFeatures {
@@ -78,15 +78,5 @@ dependencies {
     implementation libs.lifecycle.viewmodel.ktx
     implementation libs.fragment.ktx
 
-
-    testImplementation libs.junit
-    testImplementation libs.junit.jupiter.api
-    testRuntimeOnly libs.junit.jupiter.engine
-    testImplementation libs.kotlinx.coroutines.test
-    testImplementation libs.test.core.ktx
-    testImplementation libs.test.junit.ktx
-    testImplementation libs.robolectric
-
-    androidTestImplementation libs.androidTest.junit
-    androidTestImplementation libs.espresso.core
+    testImplementation project(':modules:testing')
 }
