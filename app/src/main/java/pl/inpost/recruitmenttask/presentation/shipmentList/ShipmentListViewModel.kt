@@ -93,6 +93,7 @@ class ShipmentListViewModel @Inject constructor(
 
     fun deleteShipment(section: Section.HasId) {
         viewModelScope.launch(coroutineDispatcherProvider.io) {
+            _mutableUiState.postValue(_mutableUiState.value?.copy(isRefreshing = true))
             deleteShipmentsUseCase(section.id)
         }
     }
