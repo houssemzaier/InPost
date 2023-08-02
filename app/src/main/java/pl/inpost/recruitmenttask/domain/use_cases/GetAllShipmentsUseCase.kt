@@ -6,5 +6,9 @@ import javax.inject.Inject
 class GetAllShipmentsUseCase @Inject constructor(
     private val shipmentRepository: ShipmentRepository,
 ) {
-    suspend operator fun invoke() = shipmentRepository.getAllShipments()
+    val allShipments = shipmentRepository.allShipments
+
+    suspend operator fun invoke() {
+        shipmentRepository.getAllShipments()
+    }
 }

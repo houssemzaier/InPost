@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import pl.inpost.recruitmenttask.domain.Shipment
 import pl.inpost.recruitmenttask.domain.ShipmentStatus
@@ -30,14 +32,7 @@ class ShipmentListViewModel @Inject constructor(
     val mutableUiState: LiveData<ShipmentListScreenUiState> = _mutableUiState
 
     init {
-        refreshData()
-    }
-
-    fun refreshData() {
-        viewModelScope.launch(coroutineDispatcherProvider.io) {
-            _mutableUiState.postValue(_mutableUiState.value?.copy(isRefreshing = true))
-
-            val shipments = getAllShipmentsUseCase()
+        getAllShipmentsUseCase.allShipments.onEach { shipments ->
             val sectionList = createScreenUiModel(shipments)
 
             _mutableUiState.postValue(
@@ -46,6 +41,14 @@ class ShipmentListViewModel @Inject constructor(
                     isRefreshing = false,
                 )
             )
+        }.launchIn(viewModelScope)
+        refreshData()
+    }
+
+    fun refreshData() {
+        viewModelScope.launch(coroutineDispatcherProvider.io) {
+            _mutableUiState.postValue(_mutableUiState.value?.copy(isRefreshing = true))
+            getAllShipmentsUseCase()
         }
     }
 

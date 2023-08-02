@@ -11,13 +11,16 @@ import pl.inpost.recruitmenttask.data.cache.model.ShipmentTable
 @Dao
 interface ShipmentDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(order: ShipmentTable)
+    suspend fun insert(order: List<ShipmentTable>)
 
     @Query("DELETE FROM shipment_table")
     suspend fun deleteAll()
 
     @get:Query("SELECT * FROM shipment_table")
     val all: Flow<List<ShipmentTable>>
+
+    @Query("SELECT * FROM shipment_table")
+    suspend fun getAll(): List<ShipmentTable>
 
     @Query("SELECT * FROM `shipment_table` where number = :number")
     fun getBy(number: String): Flow<ShipmentTable>
