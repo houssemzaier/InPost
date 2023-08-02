@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.inpost.recruitmenttask.R
+import pl.inpost.recruitmenttask.presentation.components.utils.supportSwipingDelete
 import java.util.Locale
 
 object CourierPackageItem {
@@ -35,10 +36,13 @@ object CourierPackageItem {
 
 
     @Composable
-    fun Card(model: Model) {
+    fun Card(model: Model, onDeleteCard:(Model) -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .supportSwipingDelete {
+                    onDeleteCard(model)
+                }
                 .background(Color.White)
                 .padding(16.dp),
         ) {
@@ -120,5 +124,5 @@ private fun PreviewCard() {
         senderName = "Jan Kowalski"
     )
 
-    CourierPackageItem.Card(model = dummyModel)
+    CourierPackageItem.Card(model = dummyModel){}
 }

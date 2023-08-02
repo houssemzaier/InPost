@@ -25,7 +25,14 @@ fun ShipmentList(list: List<Section>, onDelete: (Section.HasId) -> Unit) {
                 }
 
                 is Section.SectionItemCourier -> {
-                    CourierPackageItem.Card(section.model)
+                    CourierPackageItem.Card(section.model, onDeleteCard = {
+                        onDelete(section)
+                        Toast.makeText(
+                            context,
+                            "Deleted ${section.model.number}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    })
                     Spacer(modifier = Modifier.height(8.dp))
                 }
 
