@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
     id 'com.google.devtools.ksp'
@@ -7,25 +7,14 @@ plugins {
 }
 
 android {
-    namespace 'pl.inpost.recruitmenttask'
+    namespace 'pl.inpost.recruitmenttask.domain'
     compileSdk 33
 
     defaultConfig {
-        applicationId "pl.inpost.recruitmenttask"
         minSdk 21
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     compileOptions {
         coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_17
@@ -44,18 +33,23 @@ kapt {
     }
 }
 
-hilt {
-    enableAggregatingTask = true
-}
-
 dependencies {
-    implementation project(':modules:domain')
-    implementation project(':modules:data')
-    implementation project(':modules:presentation')
     implementation project(':modules:utils')
 
     coreLibraryDesugaring libs.desugar.jdk.libs
+    implementation libs.kotlinx.coroutines.android
 
     implementation libs.hilt.android
     ksp libs.hilt.compiler
+
+    testImplementation libs.junit
+    testImplementation libs.junit.jupiter.api
+    testRuntimeOnly libs.junit.jupiter.engine
+    testImplementation libs.kotlinx.coroutines.test
+    testImplementation libs.test.core.ktx
+    testImplementation libs.test.junit.ktx
+    testImplementation libs.robolectric
+
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.espresso.core
 }

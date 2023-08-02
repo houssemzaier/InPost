@@ -14,3 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "InPost Recruitment Task"
 include ':app'
+include ':modules:presentation'
+include ':modules:data'
+include ':modules:domain'
+include ':modules:utils'

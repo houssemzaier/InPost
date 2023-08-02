@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="status_not_ready">Not Ready</string>
+  <string name="status_adopted_at_sorting_center">Received at the Sorting Center</string>
+  <string name="status_sent_from_sorting_center">Sent from the Sorting Center</string>
+  <string name="status_adopted_at_source_branch">Received at the Branch</string>
+  <string name="status_sent_from_source_branch">Sent from the Branch</string>
+  <string name="status_avizo">Returned to Branch</string>
+  <string name="status_confirmed">In Preparation</string>
+  <string name="status_created">Shipment Created</string>
+  <string name="status_delivered">Received</string>
+  <string name="status_other">Other Status</string>
+  <string name="status_out_for_delivery">Out for Delivery</string>
+  <string name="status_pickup_time_expired">Pickup Time Expired</string>
+  <string name="status_ready_to_pickup">Ready for Pickup</string>
+  <string name="status_returned_to_sender">Returned to Sender</string>
+
+  <string name="shipmentList_label_parcel_number">Parcel number</string>
+  <string name="shipmentList_label_status">Status</string>
+  <string name="shipmentList_label_sender">Sender</string>
+  <string name="shipmentList_label_more">More</string>
+
+  <string name="shipmentList_label_awaitingPickupUntil">Awaiting pickup until</string>
+
+
+</resources>
