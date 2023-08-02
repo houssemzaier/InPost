@@ -1,6 +1,6 @@
 package pl.inpost.recruitmenttask.data.network.model
 
-import pl.inpost.recruitmenttask.domain.ShipmentType
+import pl.inpost.recruitmenttask.domain.model.ShipmentType
 
 enum class ShipmentTypeDto {
     PARCEL_LOCKER,

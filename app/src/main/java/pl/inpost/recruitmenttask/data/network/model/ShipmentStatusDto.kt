@@ -1,6 +1,6 @@
 package pl.inpost.recruitmenttask.data.network.model
 
-import pl.inpost.recruitmenttask.domain.ShipmentStatus
+import pl.inpost.recruitmenttask.domain.model.ShipmentStatus
 
 /**
  * Order of statuses

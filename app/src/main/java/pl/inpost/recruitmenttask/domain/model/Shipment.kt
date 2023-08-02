@@ -1,4 +1,4 @@
-package pl.inpost.recruitmenttask.domain
+package pl.inpost.recruitmenttask.domain.model
 
 import java.time.ZonedDateTime
 

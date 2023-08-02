@@ -3,38 +3,66 @@ package pl.inpost.recruitmenttask.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.FractionalThreshold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.swipeable
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import pl.inpost.recruitmenttask.R
 import java.util.Locale
+import kotlin.math.roundToInt
 
 object ParcelLockerItem {
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
-    fun Card(model: Model) {
+    fun Card(model: Model, onDeleteCard: (model: Model) -> Unit) {
+        val swipeState = rememberSwipeableState(initialValue = false)
+        val anchors = mapOf(0f to false, -250f to true) // 0f - closed, -250f - opened
+        LaunchedEffect(key1 = swipeState.currentValue) {
+            if (swipeState.currentValue) {
+                onDeleteCard(model)
+                swipeState.animateTo(false)
+            }
+        }
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .offset { IntOffset(swipeState.offset.value.roundToInt(), 0) }
+                .swipeable(
+                    state = swipeState,
+                    anchors = anchors,
+                    thresholds = { _, _ -> FractionalThreshold(0.5f) },
+                    orientation = Orientation.Horizontal,
+                )
                 .background(Color.White)
                 .padding(16.dp),
         ) {
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -128,5 +156,18 @@ object ParcelLockerItem {
         val senderEmail: String?,
         val pickUpTime: String,
     )
+}
 
+@Preview
+@Composable
+private fun PreviewCard() {
+    val dummyModel = ParcelLockerItem.Model(
+        number = "6567898654334567896543",
+        status = ShipmentStatusUiModel.DELIVERED,
+        pickUpTime = "pn.| 14.06.18| 11:30",
+        senderEmail = "addressmail@mail.pl",
+        senderName = "Jan Kowalski"
+    )
+
+    ParcelLockerItem.Card(model = dummyModel) {}
 }

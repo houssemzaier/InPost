@@ -32,7 +32,12 @@ class ShipmentListFragment : Fragment() {
                             TopBar()
                         },
                     ) { padding ->
-                        ShipmentListScreen(padding, shipmentList, viewModel::refreshData)
+                        ShipmentListScreen(
+                            padding,
+                            shipmentList,
+                            viewModel::refreshData,
+                            viewModel::deleteShipment
+                        )
                     }
                 }
             }

@@ -9,7 +9,7 @@ import pl.inpost.recruitmenttask.data.cache.model.ShipmentTable.Companion.toShip
 import pl.inpost.recruitmenttask.data.cache.model.ShipmentTable.Companion.toShipmentTable
 import pl.inpost.recruitmenttask.data.network.api.ShipmentApi
 import pl.inpost.recruitmenttask.data.network.model.ShipmentNetworkDto.Companion.toDomain
-import pl.inpost.recruitmenttask.domain.Shipment
+import pl.inpost.recruitmenttask.domain.model.Shipment
 import pl.inpost.recruitmenttask.domain.repositories.ShipmentRepository
 import javax.inject.Inject
 
@@ -34,5 +34,11 @@ class ShipmentRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Log.e("ShipmentRepositoryImpl", "getAllShipments: ${e.message}")
         }
+    }
+
+    override suspend fun delete(shipmentId: String) {
+        shipmentDao.deleteBy(shipmentId)
+        val storedList = shipmentDao.getAll()
+        _allShipments.value = storedList.map { it.toShipment() }
     }
 }

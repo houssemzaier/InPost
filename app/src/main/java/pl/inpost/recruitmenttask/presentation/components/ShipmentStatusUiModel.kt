@@ -2,7 +2,7 @@ package pl.inpost.recruitmenttask.presentation.components
 
 import androidx.annotation.StringRes
 import pl.inpost.recruitmenttask.R
-import pl.inpost.recruitmenttask.domain.ShipmentStatus
+import pl.inpost.recruitmenttask.domain.model.ShipmentStatus
 
 enum class ShipmentStatusUiModel(
     @StringRes val nameRes: Int,

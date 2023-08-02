@@ -2,10 +2,10 @@ package pl.inpost.recruitmenttask.data.cache.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import pl.inpost.recruitmenttask.domain.Sender
-import pl.inpost.recruitmenttask.domain.Shipment
-import pl.inpost.recruitmenttask.domain.ShipmentStatus
-import pl.inpost.recruitmenttask.domain.ShipmentType
+import pl.inpost.recruitmenttask.domain.model.Sender
+import pl.inpost.recruitmenttask.domain.model.Shipment
+import pl.inpost.recruitmenttask.domain.model.ShipmentStatus
+import pl.inpost.recruitmenttask.domain.model.ShipmentType
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 

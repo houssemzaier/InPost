@@ -19,6 +19,7 @@ fun ShipmentListScreen(
     padding: PaddingValues,
     uiState: ShipmentListScreenUiState,
     onRefresh: () -> Unit,
+    onDelete: (Section.HasId) -> Unit,
 ) {
     val pullRefreshState = rememberPullRefreshState(
         refreshing = uiState.isRefreshing,
@@ -32,7 +33,7 @@ fun ShipmentListScreen(
             .fillMaxWidth()
     ) {
 
-        ShipmentList(uiState.shipmentList)
+        ShipmentList(uiState.shipmentList, onDelete = onDelete)
 
         PullRefreshIndicator(
             uiState.isRefreshing,

@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.inpost.recruitmenttask.R
 import java.util.Locale
@@ -107,4 +108,17 @@ object CourierPackageItem {
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun PreviewCard() {
+    val dummyModel = CourierPackageItem.Model(
+        number = "6567898654334567896543",
+        status = ShipmentStatusUiModel.DELIVERED,
+        senderEmail = "addressmail@mail.pl",
+        senderName = "Jan Kowalski"
+    )
+
+    CourierPackageItem.Card(model = dummyModel)
 }

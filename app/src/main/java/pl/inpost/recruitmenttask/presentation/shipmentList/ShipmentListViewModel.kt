@@ -8,9 +8,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import pl.inpost.recruitmenttask.domain.Shipment
-import pl.inpost.recruitmenttask.domain.ShipmentStatus
-import pl.inpost.recruitmenttask.domain.ShipmentType
+import pl.inpost.recruitmenttask.domain.model.Shipment
+import pl.inpost.recruitmenttask.domain.model.ShipmentStatus
+import pl.inpost.recruitmenttask.domain.model.ShipmentType
+import pl.inpost.recruitmenttask.domain.use_cases.DeleteShipmentsUseCase
 import pl.inpost.recruitmenttask.domain.use_cases.GetAllShipmentsUseCase
 import pl.inpost.recruitmenttask.presentation.components.CourierPackageItem
 import pl.inpost.recruitmenttask.presentation.components.HeaderItem
@@ -25,6 +26,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ShipmentListViewModel @Inject constructor(
     private val getAllShipmentsUseCase: GetAllShipmentsUseCase,
+    private val deleteShipmentsUseCase: DeleteShipmentsUseCase,
     private val coroutineDispatcherProvider: CoroutineDispatcherProvider,
 ) : ViewModel() {
 
@@ -89,6 +91,11 @@ class ShipmentListViewModel @Inject constructor(
         return sectionList
     }
 
+    fun deleteShipment(section: Section.HasId) {
+        viewModelScope.launch(coroutineDispatcherProvider.io) {
+            deleteShipmentsUseCase(section.id)
+        }
+    }
 
     private fun ZonedDateTime.formatZonedDateTime(): String {
         val formatter =
