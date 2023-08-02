@@ -1,25 +1,20 @@
 package pl.inpost.recruitmenttask.data.network.api
 
-import android.content.Context
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
-import pl.inpost.recruitmenttask.data.R
 import pl.inpost.recruitmenttask.data.network.ApiTypeAdapter
 import pl.inpost.recruitmenttask.data.network.model.ShipmentNetworkDto
 import pl.inpost.recruitmenttask.data.network.model.ShipmentsResponseDto
 import javax.inject.Inject
 
 class MockShipmentApi @Inject constructor(
-    @ApplicationContext private val context: Context,
+    fakeJsonProvider: FakeJsonProvider,
     apiTypeAdapter: ApiTypeAdapter
 ) : ShipmentApi {
 
     private val response by lazy {
-        val json = context.resources.openRawResource(R.raw.mock_shipment_api_response)
-            .bufferedReader()
-            .use { it.readText() }
+        val json = fakeJsonProvider.getFakeJson()
 
         val jsonAdapter = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
