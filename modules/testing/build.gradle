@@ -53,5 +53,7 @@ dependencies {
     api libs.robolectric
     api libs.mockito.kotlin
     api libs.mockito.inline
+    api libs.io.mockk
+    api libs.androidx.arch.core
 }
 

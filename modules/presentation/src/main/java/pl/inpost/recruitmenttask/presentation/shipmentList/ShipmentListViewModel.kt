@@ -1,5 +1,6 @@
 package pl.inpost.recruitmenttask.presentation.shipmentList
 
+import androidx.annotation.OpenForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,9 +20,6 @@ import pl.inpost.recruitmenttask.presentation.components.ParcelLockerItem
 import pl.inpost.recruitmenttask.presentation.components.ShipmentStatusUiModel.Companion.toUiModel
 import pl.inpost.recruitmenttask.presentation.shipmentList.ZonedDateTimerFormatter.formatZonedDateTime
 import pl.inpost.recruitmenttask.utils.CoroutineDispatcherProvider
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -55,7 +53,8 @@ class ShipmentListViewModel @Inject constructor(
         }
     }
 
-    private fun createScreenUiModel(shipments: List<Shipment>): List<Section> {
+    @OpenForTesting
+    fun createScreenUiModel(shipments: List<Shipment>): List<Section> {
         val map = shipments.groupBy { it.status }
         val sectionList = buildList {
             map.forEach { (status: ShipmentStatus, list: List<Shipment>) ->
