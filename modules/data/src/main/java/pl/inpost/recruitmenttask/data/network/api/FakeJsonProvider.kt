@@ -3,8 +3,9 @@ package pl.inpost.recruitmenttask.data.network.api
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
 import pl.inpost.recruitmenttask.data.R
+import javax.inject.Inject
 
-class FakeJsonProvider(
+class FakeJsonProvider @Inject constructor(
     @ApplicationContext private val context: Context,
 ) {
     fun getFakeJson(): String {

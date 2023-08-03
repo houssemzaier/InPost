@@ -51,18 +51,7 @@ dependencies {
     api libs.test.core.ktx
     api libs.test.junit.ktx
     api libs.robolectric
-
-    api libs.androidTest.junit
-    api libs.espresso.core
-    //testImplementation libs.junit
-    //testImplementation libs.junit.jupiter.api
-    //testRuntimeOnly libs.junit.jupiter.engine
-    //testImplementation libs.kotlinx.coroutines.test
-    //testImplementation libs.test.core.ktx
-    //testImplementation libs.test.junit.ktx
-    //testImplementation libs.robolectric
-    //
-    //androidTestImplementation libs.androidTest.junit
-    //androidTestImplementation libs.espresso.core
+    api libs.mockito.kotlin
+    api libs.mockito.inline
 }
 
