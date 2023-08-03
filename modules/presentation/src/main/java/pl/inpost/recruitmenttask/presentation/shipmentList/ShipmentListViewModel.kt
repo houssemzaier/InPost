@@ -17,6 +17,7 @@ import pl.inpost.recruitmenttask.presentation.components.CourierPackageItem
 import pl.inpost.recruitmenttask.presentation.components.HeaderItem
 import pl.inpost.recruitmenttask.presentation.components.ParcelLockerItem
 import pl.inpost.recruitmenttask.presentation.components.ShipmentStatusUiModel.Companion.toUiModel
+import pl.inpost.recruitmenttask.presentation.shipmentList.ZonedDateTimerFormatter.formatZonedDateTime
 import pl.inpost.recruitmenttask.utils.CoroutineDispatcherProvider
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -97,11 +98,4 @@ class ShipmentListViewModel @Inject constructor(
             deleteShipmentsUseCase(section.id)
         }
     }
-
-    private fun ZonedDateTime.formatZonedDateTime(): String {
-        val formatter =
-            DateTimeFormatter.ofPattern("E'| '|dd.MM.yy'| '|HH:mm", Locale.forLanguageTag("pl-PL"))
-        return format(formatter)
-    }
-
 }
